@@ -1,0 +1,60 @@
+piVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+    name: trigger-auth-servicebus
+    namespace: customera
+spec:
+    secretTargetRef:
+        - parameter: connection
+          name: workload-keda-auth
+          key: KedaScaler
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shovel-fn
+  namespace: customera
+  labels:
+    app: shovel-fn
+spec:
+  selector:
+    matchLabels:
+      app: shovel-fn
+  template:
+    metadata:
+      labels:
+        app: shovel-fn
+    spec:
+      containers:
+      - name: shovel-fn
+        image: [INSERT URI TO ACR]/message-shovel-a:0.0.1
+        env:
+        - name: AzureFunctionsJobHost__functions__0
+          value: TransformMessage
+        - name: tenant-name
+          value: sendera
+        envFrom:
+        - secretRef:
+            name: workload-func-auth
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: shovel-fn
+  namespace: customera
+  labels: {}
+spec:
+  scaleTargetRef:
+    name: shovel-fn
+  pollingInterval: 10
+  cooldownPeriod: 10
+  minReplicaCount: 0
+  maxReplicaCount: 100
+  triggers:
+  - type: azure-servicebus
+    metadata:
+      queueName: sendera
+    authenticationRef:
+      name: trigger-auth-servicebus
+---
+
