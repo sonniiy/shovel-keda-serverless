@@ -22,3 +22,4 @@ A sample YAML file to deploy the functions to AKS is avialable under the ```/Inf
 
 The Docker File to build the Azure Function as a container is available under the ```/FunctionCode``` folder.
 
+Clients to test the routing are available under the ```/MessageClients``` folder.
