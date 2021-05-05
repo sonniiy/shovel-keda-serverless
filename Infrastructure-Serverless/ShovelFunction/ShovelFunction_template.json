@@ -7,7 +7,6 @@
             "type": "String"
         },
         "serverfarms_ASP_messaging_9acc_externalid": {
-            "defaultValue": "/subscriptions/7fdcde88-0aa7-4342-ac7c-fceebb18912e/resourceGroups/messaging/providers/Microsoft.Web/serverfarms/ASP-messaging-9acc",
             "type": "String"
         }
     },
@@ -75,7 +74,7 @@
                 "httpLoggingEnabled": false,
                 "logsDirectorySizeLimit": 35,
                 "detailedErrorLoggingEnabled": false,
-                "publishingUsername": "$edwintenant1shovel",
+                "publishingUsername": "$demotenant1shovel",
                 "azureStorageAccounts": {},
                 "scmType": "None",
                 "use32BitWorkerProcess": false,
@@ -137,7 +136,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sites_tenantshovel_name'))]"
             ],
             "properties": {
-                "siteName": "edwintenant1shovel",
+                "siteName": "demotenant1shovel",
                 "hostNameType": "Verified"
             }
         }
