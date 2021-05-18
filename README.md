@@ -18,7 +18,8 @@ If you want to deploy the shovel with normal Azure Functions, please review the 
 
 If you want to host the Azure Functions in AKS, please review CLI scripts and ARM templates available undert the ```/Infrastructure-AKS``` folder.
 
-Function Code:
+Application Code:
+
 The Docker File to build the Azure Function as a container is available under the ```/FunctionCode``` folder.
 
 Clients to test the routing are available under the ```/MessageClients``` folder.
