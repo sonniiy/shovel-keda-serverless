@@ -12,12 +12,13 @@ The sender sends a message to a service bus queue. The queue triggers an Azure F
 
 ## Deployment and Sample Code
 
-Infrastructure Code: 
+**Infrastructure Code:** 
+
 If you want to deploy the shovel with normal Azure Functions, please review the CLI script and ARM templates available under the ```/Infrastructure-Serverless``` folder.
 
 If you want to host the Azure Functions in AKS, please review CLI scripts and ARM templates available undert the ```/Infrastructure-AKS``` folder.
 
-Application Code:
+**Application Code:**
 
 The Docker File to build the Azure Function as a container is available under the ```/FunctionCode``` folder.
 
